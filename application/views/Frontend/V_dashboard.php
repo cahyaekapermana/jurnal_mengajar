@@ -8,7 +8,10 @@
 </head>
 
 <body>
-
+    <!-- Get Username -->
+    Welcome <b><?php echo $this->session->userdata('s_username'); ?></b>
+    <br>
+    Ini dashboard.
 </body>
 
 </html>

@@ -8,8 +8,11 @@
 </head>
 
 <body>
-    <form action="<?php echo site_url('C_user/c_aksi_login') ?>" method="POST">
-        <div class="container">
+    <div class="container">
+        <h3>Login Jurnal Mengajar</h3>
+        <form action="<?php echo site_url('C_user/c_aksi_login') ?>" method="POST">
+            <!-- Flashdata Login Gagal-->
+            <?php echo $this->session->flashdata('msg'); ?>
             <div class="form-group">
                 <label>Nomer Telepon</label>
                 <input type="number" name="f_notelp" class="form-control" placeholder="Enter Telpon">
@@ -21,9 +24,10 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
-            <small class="form-text text-muted">Belum punya akun? Daftar disini</small>
-        </div>
-    </form>
+        </form>
+        <small class="form-text text-muted">Belum punya akun? <a href="<?php echo site_url('C_user/V_register') ?>">Daftar disini</a></small>
+    </div>
+
 </body>
 
 </html>
