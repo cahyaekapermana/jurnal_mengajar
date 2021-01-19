@@ -19,6 +19,16 @@ class C_user extends CI_Controller
         $this->load->view('V_user/login', $data);
         $this->load->view('template/footer');
     }
+    // Fungsi saat klik tombol login
+    public function c_aksi_login()
+    {
+        $c_notelp = $this->input->post('f_notelp', TRUE)
+    }
+
+    public function c_aksi_register()
+    {
+        # code...
+    }
 }
     
     /* End of file c_test.php */
