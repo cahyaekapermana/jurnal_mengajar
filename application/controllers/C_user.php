@@ -9,7 +9,9 @@ class C_user extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        //taruh model disini
+        //taruh model/library disini :)
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
         $this->load->model('M_user');
     }
     // View
@@ -66,9 +68,22 @@ class C_user extends CI_Controller
 
     function C_aksi_register()
     {
-        $this->M_user->M_register_user();
-        // jika sudah regis diarahkan ke halaman login
-        redirect('C_user');
+        // Form Validation 
+        $this->form_validation->set_rules('f_nama', 'Nama Tidak Boleh Kosong!', 'required');
+        $this->form_validation->set_rules('f_notelp', 'Nomer Telepon Tidak Boleh Kosong!', 'required|numeric');
+        $this->form_validation->set_rules('f_email', 'Email Tidak Boleh Kosong!', 'required|valid_email');
+        $this->form_validation->set_rules('f_instansi', 'Nama Instansi Tidak Boleh Kosong!', 'required');
+        $this->form_validation->set_rules('f_password', 'Password Wajib di isi', 'required');
+        $this->form_validation->set_rules('f_konfpassword', 'Konfirmasi Password sesuai password diatas!', 'required|matches[f_password]');
+        // Kondisi Benar
+        if ($this->form_validation->run()) {
+            $this->M_user->M_register_user();
+            redirect('C_user');
+            // Lek Salah 
+        } else {
+            // Load view register
+            $this->V_register();
+        }
     }
 }
     

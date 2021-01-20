@@ -18,11 +18,12 @@ class M_user extends CI_Model
     function M_register_user()
     {
         $data = array(
-            'nama_user'    => $this->input->post('f_nama'),
-            'no_telepon'   => $this->input->post('f_notelp'),
-            'email'        => $this->input->post('f_email'),
-            'instansi'     => $this->input->post('f_instansi'),
-            'password'     => md5($this->input->post('f_password'))
+            'nama_user'         => $this->input->post('f_nama'),
+            'no_telepon'        => $this->input->post('f_notelp'),
+            'email'             => $this->input->post('f_email'),
+            'instansi'          => $this->input->post('f_instansi'),
+            'password'          => md5($this->input->post('f_password')),
+            'konf_password'          => md5($this->input->post('f_konfpassword'))
         );
 
         $this->db->insert('users', $data);
