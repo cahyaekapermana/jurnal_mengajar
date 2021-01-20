@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Waktu pembuatan: 15 Jan 2021 pada 08.18
--- Versi server: 10.4.15-MariaDB
--- Versi PHP: 7.2.34
+-- Host: 127.0.0.1
+-- Generation Time: Jan 20, 2021 at 06:41 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bantuan`
+-- Table structure for table `bantuan`
 --
 
 CREATE TABLE `bantuan` (
@@ -37,7 +37,7 @@ CREATE TABLE `bantuan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jurnal`
+-- Table structure for table `jurnal`
 --
 
 CREATE TABLE `jurnal` (
@@ -45,34 +45,34 @@ CREATE TABLE `jurnal` (
   `id_profile` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_kelas` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `jam_ke` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `kegiatan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tugas` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `data_siswa` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `catatan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kegiatan` text COLLATE utf8mb4_unicode_ci,
+  `tugas` text COLLATE utf8mb4_unicode_ci,
+  `data_siswa` text COLLATE utf8mb4_unicode_ci,
+  `catatan` text COLLATE utf8mb4_unicode_ci,
   `tgl_jurnal` datetime DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `sakit` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ijin` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `alpa` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `sakit` text COLLATE utf8mb4_unicode_ci,
+  `ijin` text COLLATE utf8mb4_unicode_ci,
+  `alpa` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelas`
+-- Table structure for table `kelas`
 --
 
 CREATE TABLE `kelas` (
   `id_kelas` int(11) NOT NULL,
   `id_profile` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nama_kelas` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `link_tugas`
+-- Table structure for table `link_tugas`
 --
 
 CREATE TABLE `link_tugas` (
@@ -80,27 +80,27 @@ CREATE TABLE `link_tugas` (
   `id_profile` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nama_tugas` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `link_tugas` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `masukan`
+-- Table structure for table `masukan`
 --
 
 CREATE TABLE `masukan` (
   `id_masukan` int(11) NOT NULL,
   `id_profile` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `masukan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `jawaban` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `masukan` text COLLATE utf8mb4_unicode_ci,
+  `jawaban` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nilai`
+-- Table structure for table `nilai`
 --
 
 CREATE TABLE `nilai` (
@@ -109,13 +109,13 @@ CREATE TABLE `nilai` (
   `id_kelas` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `materi` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tgl_nilai` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nilai_siswa`
+-- Table structure for table `nilai_siswa`
 --
 
 CREATE TABLE `nilai_siswa` (
@@ -126,39 +126,39 @@ CREATE TABLE `nilai_siswa` (
   `nilai_siswa` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `keterangan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tgl_nilaisiswa` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk`
+-- Table structure for table `produk`
 --
 
 CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
   `nama_produk` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `des_produk` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `des_produk` text COLLATE utf8mb4_unicode_ci,
   `link_produk` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `siswa`
+-- Table structure for table `siswa`
 --
 
 CREATE TABLE `siswa` (
   `id_siswa` int(11) NOT NULL,
   `id_kelas` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nama_siswa` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `nama_siswa` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -169,137 +169,146 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `instansi` varchar(225) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
+  `konf_password` varchar(255) NOT NULL,
   `premium` varchar(100) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id_user`, `foto_profil`, `nama_user`, `no_telepon`, `email`, `instansi`, `password`, `konf_password`, `premium`, `created_at`) VALUES
+(1, '', 'cahya', '08121736043', 'cahyaekapermana@gmail.com', 'cahya', '7513810474271763d6f8f0c999466094', '', NULL, NULL),
+(2, '', 'Cahya Eka Permana', '08121736043', 'cahyaekapermana@gmail.com', 'Hummasoft', '202cb962ac59075b964b07152d234b70', '202cb962ac59075b964b07152d234b70', NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `bantuan`
+-- Indexes for table `bantuan`
 --
 ALTER TABLE `bantuan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `jurnal`
+-- Indexes for table `jurnal`
 --
 ALTER TABLE `jurnal`
   ADD PRIMARY KEY (`id_jurnal`);
 
 --
--- Indeks untuk tabel `kelas`
+-- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id_kelas`);
 
 --
--- Indeks untuk tabel `link_tugas`
+-- Indexes for table `link_tugas`
 --
 ALTER TABLE `link_tugas`
   ADD PRIMARY KEY (`id_link`);
 
 --
--- Indeks untuk tabel `masukan`
+-- Indexes for table `masukan`
 --
 ALTER TABLE `masukan`
   ADD PRIMARY KEY (`id_masukan`);
 
 --
--- Indeks untuk tabel `nilai`
+-- Indexes for table `nilai`
 --
 ALTER TABLE `nilai`
   ADD PRIMARY KEY (`id_nilai`);
 
 --
--- Indeks untuk tabel `nilai_siswa`
+-- Indexes for table `nilai_siswa`
 --
 ALTER TABLE `nilai_siswa`
   ADD PRIMARY KEY (`id_nilai_siswa`);
 
 --
--- Indeks untuk tabel `produk`
+-- Indexes for table `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id_produk`);
 
 --
--- Indeks untuk tabel `siswa`
+-- Indexes for table `siswa`
 --
 ALTER TABLE `siswa`
   ADD PRIMARY KEY (`id_siswa`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `bantuan`
+-- AUTO_INCREMENT for table `bantuan`
 --
 ALTER TABLE `bantuan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `jurnal`
+-- AUTO_INCREMENT for table `jurnal`
 --
 ALTER TABLE `jurnal`
   MODIFY `id_jurnal` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `kelas`
+-- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
   MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `link_tugas`
+-- AUTO_INCREMENT for table `link_tugas`
 --
 ALTER TABLE `link_tugas`
   MODIFY `id_link` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `masukan`
+-- AUTO_INCREMENT for table `masukan`
 --
 ALTER TABLE `masukan`
   MODIFY `id_masukan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `nilai`
+-- AUTO_INCREMENT for table `nilai`
 --
 ALTER TABLE `nilai`
   MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `nilai_siswa`
+-- AUTO_INCREMENT for table `nilai_siswa`
 --
 ALTER TABLE `nilai_siswa`
   MODIFY `id_nilai_siswa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `produk`
+-- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
   MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `siswa`
+-- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
   MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
