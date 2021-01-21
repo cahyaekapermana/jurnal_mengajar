@@ -138,7 +138,7 @@
         <!-- Brand Logo -->
         <a href="<?php echo site_url('C_admin/index') ?>" class="brand-link">
             <img src="<?php echo base_url('assets/admin/dist/img/AdminLTELogo.png') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light"><?php echo $this->session->userdata('s_username'); ?></span>
+            <span class="brand-text font-weight-light">Jurnal Mengajar</span>
         </a>
 
         <!-- Sidebar -->
@@ -149,7 +149,8 @@
                     <img src="<?php echo base_url('assets/admin/dist/img/user2-160x160.jpg') ?>" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="<?php echo site_url('C_admin/index') ?>" class="d-block"></a>
+                    <!-- Session Get Username -->
+                    <a href="#" class="d-block"><?php echo $this->session->userdata('s_username'); ?></a>
                 </div>
             </div>
 
