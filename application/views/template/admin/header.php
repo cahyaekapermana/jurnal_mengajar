@@ -4,8 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title></title>
 </head>
+
+<!-- CSS untuk template adminlte, load di base url di folder assets/admin/ untuk load plugin dll -->
+
+
 <!-- Font Awesome -->
 <link rel="stylesheet" href="<?php echo base_url('assets/admin/plugins/fontawesome-free/css/all.min.css') ?>">
 <!-- Ionicons -->
@@ -26,5 +30,10 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/admin/plugins/summernote/summernote-bs4.css') ?>">
 <!-- Google Font: Source Sans Pro -->
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+<!-- DataTables -->
+<link rel="stylesheet" href="<?php echo base_url('assets/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') ?>">
 
 <body>

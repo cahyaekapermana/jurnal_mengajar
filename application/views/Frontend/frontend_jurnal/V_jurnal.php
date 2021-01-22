@@ -170,7 +170,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="<?php echo site_url('C_frontend/jurnal'); ?>" class="nav-link ">
+                        <a href="#" class="nav-link ">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
                                 Jurnal
@@ -204,6 +204,7 @@
         </div>
         <!-- /.sidebar -->
     </aside>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -211,7 +212,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Beranda</h1>
+                        <h1>Jurnal</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -227,11 +228,32 @@
                         <div class="card">
                             <div class="card-body">
                                 <!-- Content -->
-                                Isi konten disini!
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Rendering engine</th>
+                                            <th>Browser</th>
+                                            <th>Platform(s)</th>
+                                            <th>Engine version</th>
+                                            <th>CSS grade</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Trident</td>
+                                            <td>Internet
+                                                Explorer 4.0
+                                            </td>
+                                            <td>Win 95+</td>
+                                            <td> 4</td>
+                                            <td>X</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                Footer
+                                hak cipta www.pusatsekolah.com
                             </div>
                             <!-- /.card-footer-->
                         </div>
