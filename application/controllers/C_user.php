@@ -34,34 +34,74 @@ class C_user extends CI_Controller
     function C_aksi_login()
     {
         $c_notelp = $this->input->post('f_notelp', TRUE);
-        $c_password = md5($this->input->post('f_password', TRUE));
-        // Load Model
-        $cek = $this->M_user->M_aksi_login($c_notelp, $c_password);
-        // Cek session dan isi table
+        $c_password = $this->input->post('f_password', TRUE);
+        // LOAD MODEL NEW VERSION Mencocokan Inputan dengan Isi Table
+        // Cek input berdasarkan nomer telepon di table dan form apakah nomer sudah ada atau belum
+        $key = ['no_telepon' => $c_notelp];
+        $cek = $this->M_user->getDataLogin($key);
+
+        // Num rows Untuk cek apakah user terdaftar atau belum
         if ($cek->num_rows() > 0) {
-            // cek kolom table untuk session yang mengambil data di table..
-            $data = $cek->row_array();
-            // Inisialisasi variable
-            // ambil variable nama kolom di table db
-            $name  = $data['nama_user'];
-            // session
-            $sesdata = array(
-                's_username'    => $name,
-                'logged_in'     => TRUE
-            );
 
-            // set session
-            $this->session->set_userdata($sesdata);
-            // Load halaman tujuan 
-            redirect(base_url("C_frontend"));
-            // Jika salah input akan balek ke halaman login
+            // Untuk validasi password input dan table database apakah datanya sudah ada atau belum
+            $table_row = $cek->row();
+
+            if (password_verify($c_password, $table_row->password)) {
+                // Session dari ID dan Username 
+                $this->session->set_userdata('sess_id', $table_row->id_user);
+                $this->session->set_userdata('sess_username', $table_row->nama_user);
+
+                // Jika ada level admin, user2, dsb
+
+                // if ($table_row->level == "Admin") {
+                //     # code...
+                // }elseif ($table_row->level == "User") {
+                //     # code...
+                // }
+
+                redirect('C_frontend');
+            } else {
+                echo $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
+                Password salah!
+             </div>');
+                redirect('C_user');
+            }
+            // Kondisi akun belum ada/data belum ada di table
+            // 
         } else {
-
             echo $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
-            Username atau password salah!
-            </div>');
+             Akun Belum Terdaftar
+             </div>');
             redirect('C_user');
         }
+
+        // Load Model OLD VERSION
+        // $cek = $this->M_user->M_aksi_login($c_notelp, $c_password);
+        // // Cek session dan isi table
+        // if ($cek->num_rows() > 0) {
+        //     // cek kolom table untuk session yang mengambil data di table..
+        //     $data = $cek->row_array();
+        //     // Inisialisasi variable
+        //     // ambil variable nama kolom di table db
+        //     $name  = $data['nama_user'];
+        //     // session
+        //     $sesdata = array(
+        //         's_username'    => $name,
+        //         'logged_in'     => TRUE
+        //     );
+
+        //     // set session
+        //     $this->session->set_userdata($sesdata);
+        //     // Load halaman tujuan 
+        //     redirect(base_url("C_frontend"));
+        //     // Jika salah input akan balek ke halaman login
+        // } else {
+
+        //     echo $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
+        //     Username atau password salah!
+        //     </div>');
+        //     redirect('C_user');
+        // }
     }
 
     function C_aksi_register()

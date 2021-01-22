@@ -150,7 +150,7 @@
                 </div>
                 <div class="info">
                     <!-- Session Get Username -->
-                    <a href="#" class="d-block">Welcome! <b><?php echo $this->session->userdata('sess_username'); ?> </b></a>
+                    <a href="#" class="d-block">Welcome! <b><?php echo $this->session->userdata('s_username'); ?></b></a>
                 </div>
             </div>
 
@@ -170,7 +170,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="<?php echo site_url('C_frontend/jurnal'); ?>" class="nav-link ">
+                        <a href="#" class="nav-link ">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
                                 Jurnal
@@ -195,15 +195,13 @@
                             </p>
                         </a>
                     </li>
-
-
-
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
     </aside>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -211,7 +209,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Beranda</h1>
+                        <h1>Tambah Jurnal</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -219,7 +217,6 @@
 
         <!-- Main content -->
         <section class="content">
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -227,7 +224,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <!-- Content -->
-                                Isi konten disini!
+
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">

@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title><?php echo $title ?></title>
 </head>
 
 <body>
-    <!-- Get Username -->
-    Welcome <b><?php echo $this->session->userdata('s_username'); ?></b>
+    <!-- Get Username
+    Welcome <b><?php echo $this->session->userdata('s_username'); ?></b> -->
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -150,7 +150,7 @@
                 </div>
                 <div class="info">
                     <!-- Session Get Username -->
-                    <a href="#" class="d-block"><?php echo $this->session->userdata('s_username'); ?></a>
+                    <a href="#" class="d-block">Welcome! <b><?php echo $this->session->userdata('s_username'); ?></b></a>
                 </div>
             </div>
 
@@ -195,9 +195,6 @@
                             </p>
                         </a>
                     </li>
-
-
-
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -215,12 +212,15 @@
                         <h1>Jurnal</h1>
                     </div>
                 </div>
+                <!-- Tambah Jurnal btn -->
+                <div>
+                    <a class="btn btn-primary" href="<?php echo site_url('C_frontend/add_jurnal') ?>">Tambah Data</a>
+                </div>
             </div><!-- /.container-fluid -->
         </section>
 
         <!-- Main content -->
         <section class="content">
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -231,21 +231,29 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Rendering engine</th>
-                                            <th>Browser</th>
-                                            <th>Platform(s)</th>
-                                            <th>Engine version</th>
-                                            <th>CSS grade</th>
+                                            <th>No</th>
+                                            <th>Tanggal</th>
+                                            <th>Jam Ke</th>
+                                            <th>Kelas</th>
+                                            <th>Kegiatan</th>
+                                            <th>Tugas</th>
+                                            <th>Sakit</th>
+                                            <th>Ijin</th>
+                                            <th>Alpha</th>
+                                            <th>Catatan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
+                                            <td>X</td>
+                                            <td>X</td>
+                                            <td>X</td>
+                                            <td>X</td>
+                                            <td>X</td>
+                                            <td>X</td>
+                                            <td>X</td>
+                                            <td>X</td>
+                                            <td>X</td>
                                             <td>X</td>
                                         </tr>
                                     </tbody>
@@ -253,7 +261,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                hak cipta www.pusatsekolah.com
+                                Hak Cipta <b><a href="http://pusatsekolah.com/">Pusat Sekolah</a></b>
                             </div>
                             <!-- /.card-footer-->
                         </div>
