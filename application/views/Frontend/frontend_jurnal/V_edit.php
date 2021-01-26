@@ -225,15 +225,15 @@
                             <div class="card-body">
                                 <!-- Content -->
                                 <!-- form start -->
-                                <form action="" method="POST">
-                                    <input type="hidden" value="" name="id">
+                                <form action="<?php echo site_url('C_frontend/aksi_edit_jurnal') ?>" method="POST">
+                                    <input type="hidden" value="<?php echo $tampil_jurnal_id['id_jurnal'] ?>" name="id">
 
                                     <div class="card-body">
                                         <!-- Date -->
                                         <div class="form-group">
                                             <label>Date:</label>
                                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                                <input type="text" name="f_tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                                                <input type="text" value="<?php echo $tampil_jurnal_id['id_jurnal'] ?>" name="f_tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" />
                                                 <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                                 </div>
@@ -241,32 +241,31 @@
                                         </div>
                                         <!-- /.form group -->
                                         <label>Jam</label>
-                                        <div class="row form-group">
-                                            <div class="col-3">
-                                                <input type="text" value="" name="f_jamdari" class="form-control" placeholder="Dari">
-                                            </div>
-                                            <div class="col-3">
-                                                <input type="text" name="f_jamke" class="form-control" placeholder="Ke">
-                                            </div>
+                                        <div class="form-group">
+                                            <input type="text" value="<?php echo $tampil_jurnal_id['jam'] ?>" name="f_jam" class="form-control" placeholder="Dari">
                                         </div>
                                         <!-- Ambil data dari tb kelas -->
                                         <div class="form-group">
                                             <label>Kelas</label>
-                                            <select name="f_getkelas" class="form-control-lg select2-selectkelas" style="width: 100%;">
+                                            <select name="f_getkelas" class="form-control-lg select2" style="width: 100%;">
                                                 <?php foreach ($tampil_kelas->result() as $tpl) { ?>
 
-                                                    <option value="<?php echo $tpl->id_kelas ?>"><?php echo $tpl->nama_kelas ?></option>
+                                                    <?php if ($tampil_jurnal_id['id_kelas'] == $tpl->id_kelas) { ?>
+                                                        <option value="<?php echo $tpl->id_kelas ?>" selected><?php echo $tpl->nama_kelas ?></option>
+                                                    <?php } else { ?>
+                                                        <option value="<?php echo $tpl->id_kelas ?>"><?php echo $tpl->nama_kelas ?></option>
+                                                    <?php } ?>
 
                                                 <?php } ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Kegiatan</label>
-                                            <textarea class="form-control" name="f_kegiatan" rows="3" placeholder="Enter ..."></textarea>
+                                            <textarea class="form-control" value="" name="f_kegiatan" rows="3"><?php echo $tampil_jurnal_id['kegiatan'] ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Tugas</label>
-                                            <textarea class="form-control" name="f_tugas" rows="3" placeholder="Enter ..."></textarea>
+                                            <textarea class="form-control" value="" name="f_tugas" rows="3"><?php echo $tampil_jurnal_id['tugas'] ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Absensi</label>
@@ -300,7 +299,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Catatan</label>
-                                            <textarea class="form-control" name="f_catatan" rows="3" placeholder="Enter ..."></textarea>
+                                            <textarea class="form-control" name="f_catatan" rows="3"><?php echo $tampil_jurnal_id['catatan'] ?></textarea>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->

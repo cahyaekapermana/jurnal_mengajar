@@ -39,22 +39,20 @@ class C_frontend extends CI_Controller
     {
         // Menampilkan data dari table kelas ke menu tambah jurnal di select.
         $data = array(
-            'title' => "Tambah Jurnal",
-            'tampil_kelas' => $this->M_frontend->M_tampil_kelas()
+            'title'         => "Tambah Jurnal",
+            'tampil_kelas'  => $this->M_frontend->M_tampil_kelas(),
         );
         $this->load->view('template/admin/header', $data);
         $this->load->view('Frontend/frontend_jurnal/V_tambah', $data);
         $this->load->view('template/admin/footer');
     }
 
-    // Edit Jurnal View
     function edit_jurnal($id)
     {
         $data = array(
-            'title' => "Edit Jurnal",
-            'tampil_kelas' => $this->M_frontend->M_tampil_kelas(),
-            'tampil_jurnal_id' => $this->M_frontend->M_tampil_jurnal_id($id)
-
+            'title'             => "Edit Jurnal",
+            'tampil_kelas'      => $this->M_frontend->M_tampil_kelas(),
+            'tampil_jurnal_id'  => $this->M_frontend->M_tampil_jurnal_id($id)
         );
         $this->load->view('template/admin/header', $data);
         $this->load->view('Frontend/frontend_jurnal/V_edit', $data);
@@ -67,6 +65,14 @@ class C_frontend extends CI_Controller
     function aksi_add_jurnal()
     {
         $this->M_frontend->M_tambah_jurnal();
+
+        redirect('C_frontend/jurnal', 'refresh');
+    }
+
+    // Aksi Edit Jurnal
+    function aksi_edit_jurnal()
+    {
+        $this->M_frontend->M_edit_jurnal();
 
         redirect('C_frontend/jurnal', 'refresh');
     }

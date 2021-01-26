@@ -254,7 +254,7 @@
                                                         </button>
                                                         <div class="dropdown-menu" role="menu">
                                                             <a class="dropdown-item" href="#">Detail</a>
-                                                            <a class="dropdown-item" href="<?php echo site_url('C_frontend/edit_jurnal') ?>">Edit</a>
+                                                            <a class="dropdown-item" href="<?php echo site_url('C_frontend/edit_jurnal/' . $tpl->id_jurnal) ?>">Edit</a>
                                                             <div class="dropdown-divider"></div>
                                                             <a class="dropdown-item btn-danger" href="#">Hapus</a>
                                                         </div>

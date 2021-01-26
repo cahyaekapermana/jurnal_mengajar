@@ -67,17 +67,20 @@
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
+
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
         });
 
         //Initialize Select2 Elements
-        // select kelas
-        $('.select2-selectkelas').select2();
-        // 
-        $('.select2').select2();
-
-
-        //Date range picker
-        $('#reservationdate').datetimepicker();
+        $('.select2').select2()
 
         //Initialize Select2 Elements
         $('.select2bs4').select2({
@@ -93,11 +96,14 @@
             'placeholder': 'mm/dd/yyyy'
         })
         //Money Euro
-        $('[data-mask]').inputmask();
-
+        $('[data-mask]').inputmask()
 
         //Date range picker
-        $('#reservation').daterangepicker();
+        $('#reservationdate').datetimepicker({
+            format: 'L'
+        });
+        //Date range picker
+        $('#reservation').daterangepicker()
         //Date range picker with time picker
         $('#reservationtime').daterangepicker({
             timePicker: true,
@@ -144,8 +150,8 @@
         $("input[data-bootstrap-switch]").each(function() {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         });
-    });
 
+    })
     // BS-Stepper Init
     document.addEventListener('DOMContentLoaded', function() {
         window.stepper = new Stepper(document.querySelector('.bs-stepper'))

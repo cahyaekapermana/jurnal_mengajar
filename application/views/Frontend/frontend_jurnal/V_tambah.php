@@ -250,7 +250,7 @@
                                         <!-- Ambil data dari tb kelas -->
                                         <div class="form-group">
                                             <label>Kelas</label>
-                                            <select name="f_getkelas" class="form-control-lg select2-selectkelas" style="width: 100%;">
+                                            <select name="f_getkelas" class="form-control-lg select2" style="width: 100%;">
                                                 <?php foreach ($tampil_kelas->result() as $tpl) { ?>
 
                                                     <option value="<?php echo $tpl->id_kelas ?>"><?php echo $tpl->nama_kelas ?></option>
