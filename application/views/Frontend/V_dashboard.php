@@ -7,9 +7,7 @@
     <title><?php echo $title ?></title>
 </head>
 
-<body>
-    <!-- Get Username
-    Welcome <b><?php echo $this->session->userdata('s_username'); ?></b> -->
+<body class="hold-transition sidebar-mini layout-fixed">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->

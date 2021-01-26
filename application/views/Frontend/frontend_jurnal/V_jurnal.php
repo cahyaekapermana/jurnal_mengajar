@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title ?></title>
 </head>
 
-<body>
+<body class="hold-transition sidebar-mini layout-fixed">
     <!-- Get Username
     Welcome <b><?php echo $this->session->userdata('s_username'); ?></b> -->
     <!-- Navbar -->
@@ -233,30 +232,39 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Tanggal</th>
-                                            <th>Jam Ke</th>
+                                            <th>Jam</th>
                                             <th>Kelas</th>
-                                            <th>Kegiatan</th>
-                                            <th>Tugas</th>
-                                            <th>Sakit</th>
-                                            <th>Ijin</th>
-                                            <th>Alpha</th>
-                                            <th>Catatan</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>X</td>
-                                            <td>X</td>
-                                            <td>X</td>
-                                            <td>X</td>
-                                            <td>X</td>
-                                            <td>X</td>
-                                            <td>X</td>
-                                            <td>X</td>
-                                            <td>X</td>
-                                            <td>X</td>
-                                        </tr>
+                                        <?php $no = 1;
+                                        foreach ($tampil_jurnal->result() as $tpl) { ?>
+                                            <tr>
+                                                <td><?php echo $no ?></td>
+                                                <!-- Menampilkan waktu urut dari hari, bulan, tahun dan waktu -->
+                                                <td><?php echo date('d F Y H:i:A', strtotime($tpl->tgl_jurnal)) ?></td>
+                                                <td><?php echo $tpl->jam ?></td>
+                                                <td><?php echo $tpl->nama_kelas ?></td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-success btn-flat">Pilihan</button>
+                                                        <button type="button" class="btn btn-success btn-flat dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                            <span class="sr-only">Toggle Dropdown</span>
+                                                        </button>
+                                                        <div class="dropdown-menu" role="menu">
+                                                            <a class="dropdown-item" href="#">Detail</a>
+                                                            <a class="dropdown-item" href="<?php echo site_url('C_frontend/edit_jurnal') ?>">Edit</a>
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item btn-danger" href="#">Hapus</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php $no++;
+                                        } ?>
                                     </tbody>
+
                                 </table>
                             </div>
                             <!-- /.card-body -->
