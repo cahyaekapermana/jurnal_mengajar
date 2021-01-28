@@ -10,7 +10,6 @@ class C_user extends CI_Controller
     {
         parent::__construct();
         //taruh model/library disini :)
-        $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->model('M_user');
     }
@@ -18,15 +17,17 @@ class C_user extends CI_Controller
     public function index()
     {
         $data['title'] = 'Login Jurnal Mengajar';
-        $this->load->view('template/login/header');
+        $this->load->view('template/header');
         $this->load->view('V_user/login', $data);
+        $this->load->view('template/footer');
     }
 
     function V_register()
     {
         $data['title'] = 'Registrasi Pengguna';
-        $this->load->view('template/login/header');
+        $this->load->view('template/header');
         $this->load->view('V_user/register', $data);
+        $this->load->view('template/footer');
     }
 
     // Aksi
@@ -48,7 +49,7 @@ class C_user extends CI_Controller
 
             if (password_verify($c_password, $table_row->password)) {
                 // Session dari ID dan Username 
-                $this->session->set_userdata('sess_id', $table_row->id_user);
+                $this->session->set_userdata('sess_id', $table_row->id_profile);
                 $this->session->set_userdata('sess_username', $table_row->nama_user);
 
                 // Jika ada level admin, user2, dsb
@@ -58,11 +59,10 @@ class C_user extends CI_Controller
                 // }elseif ($table_row->level == "User") {
                 //     # code...
                 // }
-
                 redirect('C_frontend');
             } else {
                 echo $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
-                Password salah!
+                Nomor Telepon Atau Password salah!
              </div>');
                 redirect('C_user');
             }

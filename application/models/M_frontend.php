@@ -12,8 +12,12 @@ class M_frontend extends CI_Model
     // Tampil table kelas
     function M_tampil_kelas()
     {
-        $sql = "SELECT id_kelas, id_profile, nama_kelas FROM kelas ORDER BY id_kelas DESC";
-        return $this->db->query($sql);
+        $sessId = $this->session->userdata('sess_id');
+
+        $sql = "SELECT id_kelas, nama_kelas, id_profile FROM kelas WHERE kelas.id_profile = '$sessId' ORDER BY id_kelas DESC";
+        $query = $this->db->query($sql);
+
+        return $query;
     }
 
     function M_tampil_kelas_id($id)

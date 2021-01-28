@@ -1,71 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6" style="margin: auto; margin-top: 5%;">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Registrasi Jurnal Mengajar</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form action="<?php echo site_url('C_user/C_aksi_register') ?>" method="POST">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Nama</label>
+                                <input type="text" class="form-control" name="f_nama" placeholder="Masukan Nama">
+                                <small class="form-text text-danger"><?php echo form_error('f_nama') ?></small>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title; ?></title>
-</head>
+                            </div>
+                            <div class="form-group">
+                                <label>Nomer Telepon</label>
+                                <input type="text" class="form-control" name="f_notelp" placeholder="Masukan Nomer Telepon">
+                                <small class="form-text text-danger"><?php echo form_error('f_notelp') ?></small>
 
-<body>
-    <div class="container">
-        <h2>Registrasi Jurnal Mengajar</h2>
-        <br>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="f_email" placeholder="Masukan Email">
+                                <small class="form-text text-danger"><?php echo form_error('f_email') ?></small>
 
-        <form action="<?php echo site_url('C_user/C_aksi_register') ?>" method="POST">
-            <table>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label>Nama</label>
-                            <input type="text" name="f_nama" class="form-control" placeholder="Ketik disini">
-                            <small class="form-text text-danger"><?php echo form_error('f_nama') ?></small>
+                            </div>
+                            <div class="form-group">
+                                <label>Nama Instansi</label>
+                                <input type="text" class="form-control" name="f_instansi" placeholder="Masukan Instansi">
+                                <small class="form-text text-danger"><?php echo form_error('f_instansi') ?></small>
+
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="f_password" placeholder="Masukan Password">
+                                <small class="form-text text-danger"><?php echo form_error('f_password') ?></small>
+
+                            </div>
+                            <div class="form-group">
+                                <label>Konfirmasi Password</label>
+                                <input type="password" class="form-control" name="f_konfpassword" placeholder="Masukan Konfirmasi Password">
+                                <small class="form-text text-danger"><?php echo form_error('f_konfpassword') ?></small>
+
+                            </div>
+
+                            <small class="text-muted">Sudah Memiliki Akun? <a href="<?php echo site_url('C_user') ?>">Login Disini!</a></small>
                         </div>
-                        <div class="form-group">
-                            <label>Nomer Telepon</label>
-                            <input type="text" name="f_notelp" class="form-control" placeholder="Ketik disini">
-                            <small class="form-text text-danger"><?php echo form_error('f_notelp') ?></small>
+                        <!-- /.card-body -->
 
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" name="f_email" class="form-control" placeholder="Ketik disini">
-                            <small class="form-text text-danger"><?php echo form_error('f_email') ?></small>
-                        </div>
-                        <div class="form-group">
-                            <label>Nama Instansi</label>
-                            <input type="text" name="f_instansi" class="form-control" placeholder="Ketik disini">
-                            <small class="form-text text-danger"><?php echo form_error('f_instansi') ?></small>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" name="f_password" class="form-control" placeholder="Ketik disini">
-                            <small class="form-text text-danger"><?php echo form_error('f_password') ?></small>
-                        </div>
-                        <div class="form-group">
-                            <label>Konfirmasi Password</label>
-                            <input type="password" name="f_konfpassword" class="form-control" placeholder="Ketik disini">
-                            <small class="form-text text-danger"><?php echo form_error('f_konfpassword') ?></small>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-            <br>
-            <button type="submit" class="submit">Submit</button>
-        </form>
-
-        <br>
-        <center>
-            <small class="form-text text-muted">Sudah punya akun?
-                <a href="<?php echo site_url('C_user') ?>">Login disini</a>
-            </small>
-        </center>
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
     </div>
-
-</body>
-
-</html>
+</section>
