@@ -169,7 +169,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="<?php echo site_url('C_frontend/jurnal'); ?>" class="nav-link ">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
                                 Jurnal
@@ -178,7 +178,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="<?php echo site_url('C_frontend'); ?>" class="nav-link ">
+                        <a href="<?php echo site_url('C_frontend/link_tugas'); ?>" class="nav-link ">
                             <i class="nav-icon fas fa-link"></i>
                             <p>
                                 Link Tugas
@@ -187,10 +187,19 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="<?php echo site_url('C_frontend'); ?>" class="nav-link ">
+                        <a href="<?php echo site_url('C_frontend/data_kelas'); ?>" class="nav-link ">
                             <i class="nav-icon fas fa-chalkboard-teacher"></i>
                             <p>
                                 Data Kelas
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="<?php echo site_url('C_frontend/data_siswa'); ?>" class="nav-link ">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Data Siswa
                             </p>
                         </a>
                     </li>
@@ -253,10 +262,10 @@
                                                             <span class="sr-only">Toggle Dropdown</span>
                                                         </button>
                                                         <div class="dropdown-menu" role="menu">
-                                                            <a class="dropdown-item" href="#">Detail</a>
+                                                            <a class="dropdown-item" href="<?php echo site_url('C_frontend/detail_jurnal/' . $tpl->id_jurnal) ?>">Detail</a>
                                                             <a class="dropdown-item" href="<?php echo site_url('C_frontend/edit_jurnal/' . $tpl->id_jurnal) ?>">Edit</a>
                                                             <div class="dropdown-divider"></div>
-                                                            <a class="dropdown-item btn-danger" href="#">Hapus</a>
+                                                            <a class="dropdown-item btn-danger" href="<?php echo site_url('C_frontend/hapus_jurnal/' . $tpl->id_jurnal) ?>">Hapus</a>
                                                         </div>
                                                     </div>
                                                 </td>

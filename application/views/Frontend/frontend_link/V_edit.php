@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title ?></title>
+    <title></title>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+    <!-- Get Username
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -148,7 +149,7 @@
                 </div>
                 <div class="info">
                     <!-- Session Get Username -->
-                    <a href="#" class="d-block">Welcome! <b><?php echo $this->session->userdata('sess_username'); ?> </b></a>
+                    <a href="#" class="d-block">Welcome! <b><?php echo $this->session->userdata('sess_username'); ?></b></a>
                 </div>
             </div>
 
@@ -159,7 +160,7 @@
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="<?php echo site_url('C_frontend'); ?>" class="nav-link ">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
@@ -168,7 +169,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="<?php echo site_url('C_frontend/jurnal'); ?>" class="nav-link ">
+                        <a href="<?php echo site_url('C_frontend/jurnal') ?>" class="nav-link ">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
                                 Jurnal
@@ -209,6 +210,7 @@
         </div>
         <!-- /.sidebar -->
     </aside>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -216,7 +218,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Beranda</h1>
+                        <h4>Edit Link Tugas</h4>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -224,7 +226,6 @@
 
         <!-- Main content -->
         <section class="content">
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -232,20 +233,39 @@
                         <div class="card">
                             <div class="card-body">
                                 <!-- Content -->
-                                Isi konten disini!
+                                <!-- form start -->
+                                <form action="<?php echo site_url('C_frontend/aksi_edit_tugas') ?>" method="POST">
+                                    <input type="hidden" value="<?php echo $tampil_link_id['id_link'] ?>" name="f_idlink">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Nama Tugas</label>
+                                            <input type="text" name="f_nama" value="<?php echo $tampil_link_id['nama_tugas'] ?>" class="form-control" placeholder="Ketik disini">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Link Tugas</label>
+                                            <input type="text" value="<?php echo $tampil_link_id['link_tugas'] ?>" name="f_link" class="form-control" placeholder="Ketik disini">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
                             </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer">
-                                Hak Cipta <b><a href="http://pusatsekolah.com/">Pusat Sekolah</a></b>
-                            </div>
-                            <!-- /.card-footer-->
+                            <!-- /.card -->
+
                         </div>
-                        <!-- /.card -->
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            Hak Cipta <b><a href="http://pusatsekolah.com/">Pusat Sekolah</a></b>
+                        </div>
+                        <!-- /.card-footer-->
                     </div>
+                    <!-- /.card -->
                 </div>
             </div>
-        </section>
-        <!-- /.content -->
+    </div>
+    </section>
+    <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 

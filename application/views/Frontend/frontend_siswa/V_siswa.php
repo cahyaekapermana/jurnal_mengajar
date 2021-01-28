@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title ?></title>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+    <!-- Get Username
+    Welcome <b><?php echo $this->session->userdata('s_username'); ?></b> -->
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -148,7 +149,7 @@
                 </div>
                 <div class="info">
                     <!-- Session Get Username -->
-                    <a href="#" class="d-block">Welcome! <b><?php echo $this->session->userdata('sess_username'); ?> </b></a>
+                    <a href="#" class="d-block">Welcome! <b><?php echo $this->session->userdata('s_username'); ?></b></a>
                 </div>
             </div>
 
@@ -159,7 +160,7 @@
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="<?php echo site_url('C_frontend'); ?>" class="nav-link ">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
@@ -168,7 +169,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="<?php echo site_url('C_frontend/jurnal'); ?>" class="nav-link ">
+                        <a href="<?php echo site_url('C_frontend/jurnal') ?>" class="nav-link ">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
                                 Jurnal
@@ -202,13 +203,13 @@
                             </p>
                         </a>
                     </li>
-
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
     </aside>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -216,15 +217,18 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Beranda</h1>
+                        <h1>Data Siswa</h1>
                     </div>
+                </div>
+                <!-- Tambah Link btn -->
+                <div>
+                    <a class="btn btn-primary" href="<?php echo site_url('C_frontend/tambah_siswa') ?>">Tambah Siswa</a>
                 </div>
             </div><!-- /.container-fluid -->
         </section>
 
         <!-- Main content -->
         <section class="content">
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -232,7 +236,38 @@
                         <div class="card">
                             <div class="card-body">
                                 <!-- Content -->
-                                Isi konten disini!
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Siswa</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 1;
+                                        foreach ($tampil_siswa->result() as $tpl) { ?>
+                                            <tr>
+                                                <td><?php echo $no ?></td>
+                                                <td><?php echo $tpl->nama_siswa ?></td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-success btn-flat">Pilihan</button>
+                                                        <button type="button" class="btn btn-success btn-flat dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                            <span class="sr-only">Toggle Dropdown</span>
+                                                        </button>
+                                                        <div class="dropdown-menu" role="menu">
+                                                            <a class="dropdown-item" href="<?php echo site_url('C_frontend/edit_siswa/' . $tpl->id_siswa) ?>">Edit</a>
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item btn-danger" href="<?php echo site_url('C_frontend/hapus_siswa/' . $tpl->id_siswa) ?>">Hapus</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php $no++;
+                                        } ?>
+                                    </tbody>
+                                </table>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">

@@ -178,7 +178,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="<?php echo site_url('C_frontend'); ?>" class="nav-link ">
+                        <a href="<?php echo site_url('C_frontend/link_tugas'); ?>" class="nav-link ">
                             <i class="nav-icon fas fa-link"></i>
                             <p>
                                 Link Tugas
@@ -187,10 +187,19 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="<?php echo site_url('C_frontend'); ?>" class="nav-link ">
+                        <a href="<?php echo site_url('C_frontend/data_kelas'); ?>" class="nav-link ">
                             <i class="nav-icon fas fa-chalkboard-teacher"></i>
                             <p>
                                 Data Kelas
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="<?php echo site_url('C_frontend/data_siswa'); ?>" class="nav-link ">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Data Siswa
                             </p>
                         </a>
                     </li>
