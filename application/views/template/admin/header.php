@@ -159,14 +159,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="<?php echo site_url('C_frontend/data_siswa'); ?>" class="nav-link ">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>
-                                Data Siswa
-                            </p>
-                        </a>
-                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

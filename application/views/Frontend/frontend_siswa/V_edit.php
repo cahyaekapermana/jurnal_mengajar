@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h4>Edit Link Tugas</h4>
+                    <h4>Edit Siswa</h4>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -22,10 +22,18 @@
                             <!-- Content -->
                             <!-- form start -->
                             <form action="<?php echo site_url('C_frontend/aksi_edit_siswa') ?>" method="POST">
-                                <input type="hidden" value="<?php echo $tampil_siswa_id['id_siswa'] ?>" name="f_idSiswa">
+                                <!-- Segment edit siswa by id_kelas -->
+                                <?php
+
+                                $id_kelas = $this->uri->segment(3);
+
+                                ?>
+                                <!-- Id siswa ditambahkan ke id kelas -->
+                                <input type="hidden" value="<?php echo $id_kelas ?>" name="f_idkelas">
+                                <input type="hidden" value="<?php echo $tampil_siswa_id['id_siswa'] ?>" name="f_idsiswa">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Nama Tugas</label>
+                                        <label for="exampleInputEmail1">Nama Siswa</label>
                                         <input type="text" name="f_nama" value="<?php echo $tampil_siswa_id['nama_siswa'] ?>" class="form-control" placeholder="Ketik disini">
                                     </div>
                                 </div>

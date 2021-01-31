@@ -17,16 +17,16 @@ class C_user extends CI_Controller
     public function index()
     {
         $data['title'] = 'Login Jurnal Mengajar';
-        $this->load->view('template/header');
-        $this->load->view('V_user/login', $data);
+        $this->load->view('template/header', $data);
+        $this->load->view('V_user/login');
         $this->load->view('template/footer');
     }
 
     function V_register()
     {
         $data['title'] = 'Registrasi Pengguna';
-        $this->load->view('template/header');
-        $this->load->view('V_user/register', $data);
+        $this->load->view('template/header', $data);
+        $this->load->view('V_user/register');
         $this->load->view('template/footer');
     }
 

@@ -62,13 +62,15 @@ class C_frontend extends CI_Controller
         $this->load->view('template/admin/footer');
     }
 
-    function detail_jurnal($id)
+    // Detail Jurnal Join
+    function detail_jurnal($id_jurnal, $id_kelas)
     {
         $data = array(
             'title'             => "Detail Jurnal",
-            'tampil_kelas_id'   => $this->M_frontend->M_tampil_kelas_id($id),
-            'tampil_jurnal_id'  => $this->M_frontend->M_tampil_jurnal_id($id)
+            'tampil_detail'     => $this->M_frontend->M_detail_jurnal($id_jurnal, $id_kelas)
         );
+
+
         $this->load->view('template/admin/header', $data);
         $this->load->view('Frontend/frontend_jurnal/V_detail', $data);
         $this->load->view('template/admin/footer');
@@ -161,14 +163,16 @@ class C_frontend extends CI_Controller
     }
 
     // ==================================================================================================================
-    // SISWA
+    // View Data Siswa Berdasarkan id_kelas
     // ==================================================================================================================
 
-    function data_siswa()
+    function data_siswa($var_id_kelas)
     {
+
         $data = array(
-            'title'             => "Data Siswa",
-            'tampil_siswa'      => $this->M_frontend->M_tampil_siswa()
+            'title'                   => "Data Siswa",
+            'datasiswa_by_kelas'      => $this->M_frontend->M_datasiswa_by_kelas($var_id_kelas),
+            'tampil_kelas_id'         => $this->M_frontend->M_tampil_kelas_id($var_id_kelas)
         );
 
         $this->load->view('template/admin/header', $data);
@@ -179,7 +183,7 @@ class C_frontend extends CI_Controller
     function tambah_siswa()
     {
         $data = array(
-            'title'             => "Tambah Siswa"
+            'title'              => "Tambah Siswa",
         );
 
         $this->load->view('template/admin/header', $data);
@@ -187,11 +191,11 @@ class C_frontend extends CI_Controller
         $this->load->view('template/admin/footer');
     }
 
-    function edit_siswa($id)
+    function edit_siswa($var_idkelas, $var_idsiswa)
     {
         $data = array(
             'title'                 => "Tambah Siswa",
-            'tampil_siswa_id'       => $this->M_frontend->M_tampil_siswa_id($id)
+            'tampil_siswa_id'       => $this->M_frontend->M_tampil_siswa_id($var_idkelas, $var_idsiswa)
         );
 
         $this->load->view('template/admin/header', $data);
@@ -201,23 +205,34 @@ class C_frontend extends CI_Controller
 
     function aksi_add_siswa()
     {
+        $id = $this->input->post('f_idkelas');
         $this->M_frontend->M_tambah_siswa();
 
-        redirect('C_frontend/data_siswa');
+        // redirect('C_frontend/data_siswa/'. $id); // before
+
+        $url = 'C_frontend/data_siswa/' . $id;
+        redirect($url);
+        // arah controller -> function | controller/function/id
     }
 
+    // Sertakan parameter kelas dan siswa saat melakukan edit dan hapus data 
     function aksi_edit_siswa()
     {
-        $this->M_frontend->M_edit_siswa();
+        $var_idkelas = $this->input->post('f_idkelas');
+        $var_idsiswa = $this->input->post('f_idsiswa');
 
-        redirect('C_frontend/data_siswa');
+        $this->M_frontend->M_edit_siswa($var_idkelas, $var_idsiswa);
+
+        $url = 'C_frontend/data_siswa/' . $var_idkelas;
+        redirect($url);
     }
 
-    function hapus_siswa($id)
+    function hapus_siswa($var_idkelas, $var_idsiswa)
     {
-        $this->M_frontend->M_hapus_siswa($id);
+        $this->M_frontend->M_hapus_siswa($var_idkelas, $var_idsiswa);
 
-        redirect('C_frontend/data_siswa');
+        // sertakan id untuk menghapus
+        redirect('C_frontend/data_siswa/' . $var_idkelas);
     }
 
 

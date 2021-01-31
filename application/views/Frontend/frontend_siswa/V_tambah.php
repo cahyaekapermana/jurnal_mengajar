@@ -22,6 +22,13 @@
                             <!-- Content -->
                             <!-- form start -->
                             <form action="<?php echo site_url('C_frontend/aksi_add_siswa') ?>" method="POST">
+                                <?php
+
+                                $id_kelas = $this->uri->segment(3);
+
+                                ?>
+                                <!-- Id siswa ditambahkan ke id kelas -->
+                                <input type="hidden" value="<?php echo $id_kelas ?>" name="f_idkelas">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Nama Siswa</label>

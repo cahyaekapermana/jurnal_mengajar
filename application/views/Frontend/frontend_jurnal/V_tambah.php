@@ -68,28 +68,21 @@
                                     <div class="form-group">
                                         <label>Sakit</label>
                                         <select class="form-control-lg select2" style="width: 100%;">
-                                            <option selected="selected">Alabama</option>
-                                            <option>Alaska</option>
-                                            <option>California</option>
-                                            <option>Delaware</option>
+                                            <option></option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Ijin</label>
                                         <select class="form-control-lg select2" style="width: 100%;">
-                                            <option selected="selected">Alabama</option>
-                                            <option>Alaska</option>
-                                            <option>California</option>
-                                            <option>Delaware</option>
+                                            <option value=""></option>
+
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Alpha</label>
                                         <select class="form-control-lg select2" style="width: 100%;">
-                                            <option selected="selected">Alabama</option>
-                                            <option>Alaska</option>
-                                            <option>California</option>
-                                            <option>Delaware</option>
+                                            <option value=""></option>
+
                                         </select>
                                     </div>
                                     <div class="form-group">

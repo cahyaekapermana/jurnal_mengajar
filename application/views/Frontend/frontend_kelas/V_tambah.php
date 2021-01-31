@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h4>Tambah Link Tugas</h4>
+                    <h4>Tambah Kelas</h4>
                 </div>
             </div>
         </div><!-- /.container-fluid -->

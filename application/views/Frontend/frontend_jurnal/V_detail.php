@@ -36,15 +36,15 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><?php echo $tampil_jurnal_id['tgl_jurnal'] ?></td>
-                                        <td><?php echo $tampil_jurnal_id['jam'] ?></td>
-                                        <td><?php echo $tampil_kelas_id['nama_kelas'] ?></td>
-                                        <td><?php echo $tampil_jurnal_id['kegiatan'] ?></td>
-                                        <td><?php echo $tampil_jurnal_id['tugas'] ?></td>
-                                        <td><?php echo $tampil_jurnal_id['sakit'] ?></td>
-                                        <td><?php echo $tampil_jurnal_id['ijin'] ?></td>
-                                        <td><?php echo $tampil_jurnal_id['alpa'] ?></td>
-                                        <td><?php echo $tampil_jurnal_id['catatan'] ?></td>
+                                        <td><?php echo $tampil_detail['tgl_jurnal'] ?></td>
+                                        <td><?php echo $tampil_detail['jam'] ?></td>
+                                        <td><?php echo $tampil_detail['nama_kelas'] ?></td>
+                                        <td><?php echo $tampil_detail['kegiatan'] ?></td>
+                                        <td><?php echo $tampil_detail['tugas'] ?></td>
+                                        <td><?php echo $tampil_detail['sakit'] ?></td>
+                                        <td><?php echo $tampil_detail['ijin'] ?></td>
+                                        <td><?php echo $tampil_detail['alpa'] ?></td>
+                                        <td><?php echo $tampil_detail['catatan'] ?></td>
                                     </tr>
                                 </tbody>
 

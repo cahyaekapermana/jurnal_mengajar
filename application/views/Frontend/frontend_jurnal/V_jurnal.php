@@ -50,7 +50,7 @@
                                                         <span class="sr-only">Toggle Dropdown</span>
                                                     </button>
                                                     <div class="dropdown-menu" role="menu">
-                                                        <a class="dropdown-item" href="<?php echo site_url('C_frontend/detail_jurnal/' . $tpl->id_jurnal) ?>">Detail</a>
+                                                        <a class="dropdown-item" href="<?php echo site_url('C_frontend/detail_jurnal/' . $tpl->id_jurnal . '/' . $tpl->id_kelas) ?>">Detail</a>
                                                         <a class="dropdown-item" href="<?php echo site_url('C_frontend/edit_jurnal/' . $tpl->id_jurnal) ?>">Edit</a>
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item btn-danger" href="<?php echo site_url('C_frontend/hapus_jurnal/' . $tpl->id_jurnal) ?>">Hapus</a>

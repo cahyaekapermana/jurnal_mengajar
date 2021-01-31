@@ -46,6 +46,9 @@
                                                     </button>
                                                     <div class="dropdown-menu" role="menu">
                                                         <a class="dropdown-item" href="<?php echo site_url('C_frontend/edit_kelas/' . $tpl->id_kelas) ?>">Edit</a>
+                                                        <!-- get function data siswa yang sudah terintegrasi kelas -->
+                                                        <a class="dropdown-item" href="<?php echo site_url('C_frontend/data_siswa/' . $tpl->id_kelas) ?>">Data Siswa</a>
+
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item btn-danger" href="<?php echo site_url('C_frontend/hapus_kelas/' . $tpl->id_kelas) ?>">Hapus</a>
                                                     </div>
