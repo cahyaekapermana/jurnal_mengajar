@@ -37,17 +37,46 @@ class C_frontend extends CI_Controller
         $this->load->view('template/admin/footer');
     }
 
+    function add_jurnal_kelas()
+    {
+        // get data table jurnal yang sudah di join
+        $data = array(
+            'title' => "Jurnal",
+            'tampil_kelas'  => $this->M_frontend->M_tampil_kelas()
+        );
+
+        $this->load->view('template/admin/header', $data);
+        $this->load->view('Frontend/frontend_jurnal/V_tambah_kelas', $data);
+        $this->load->view('template/admin/footer');
+    }
+
     // Tambah Jurnal View
     function add_jurnal()
     {
-        // Menampilkan data dari table kelas ke menu tambah jurnal di select.
-        $data = array(
-            'title'         => "Tambah Jurnal",
-            'tampil_kelas'  => $this->M_frontend->M_tampil_kelas(),
-        );
-        $this->load->view('template/admin/header', $data);
-        $this->load->view('Frontend/frontend_jurnal/V_tambah', $data);
-        $this->load->view('template/admin/footer');
+
+        // id kelas 
+        $getIdKelas = $this->input->get('f_getkelas');
+
+        if ($getIdKelas) {
+
+            $dataKelasByIdKelas      = $this->M_frontend->M_tampil_kelas_id($getIdKelas);
+            $dataSiswaByIdKelas = $this->M_frontend->M_datasiswa_by_kelas($getIdKelas);
+
+            if ($dataKelasByIdKelas) { // apakah id kelas tersedia ? atau ada ?
+                // Menampilkan data dari table kelas ke menu tambah jurnal di select.
+                $data = array(
+                    'title'         => "Tambah Jurnal",
+                    'kelas_byId'        => $dataKelasByIdKelas,
+                    'siswa_byIdKelas'   => $dataSiswaByIdKelas
+                );
+                $this->load->view('template/admin/header', $data);
+                $this->load->view('Frontend/frontend_jurnal/V_tambah', $data);
+                $this->load->view('template/admin/footer');
+            } else show_404();
+        } else {
+
+            show_404();
+        }
     }
 
     function edit_jurnal($id)
@@ -90,7 +119,7 @@ class C_frontend extends CI_Controller
     {
         $this->M_frontend->M_tambah_jurnal();
 
-        redirect('C_frontend/jurnal');
+        // redirect('C_frontend/jurnal');
     }
 
     // Aksi Edit Jurnal

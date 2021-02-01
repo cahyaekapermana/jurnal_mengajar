@@ -10,7 +10,7 @@
             </div>
             <!-- Tambah Jurnal btn -->
             <div>
-                <a class="btn btn-primary" href="<?php echo site_url('C_frontend/add_jurnal') ?>">Tambah Data</a>
+                <a class="btn btn-primary" href="<?php echo site_url('C_frontend/add_jurnal_kelas') ?>">Tambah Jurnal</a>
             </div>
         </div><!-- /.container-fluid -->
     </section>

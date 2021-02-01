@@ -28,9 +28,6 @@
                                         <th>Kelas</th>
                                         <th>Kegiatan</th>
                                         <th>Tugas</th>
-                                        <th>Sakit</th>
-                                        <th>Ijin</th>
-                                        <th>Alpa</th>
                                         <th>Catatan</th>
                                     </tr>
                                 </thead>
@@ -41,9 +38,6 @@
                                         <td><?php echo $tampil_detail['nama_kelas'] ?></td>
                                         <td><?php echo $tampil_detail['kegiatan'] ?></td>
                                         <td><?php echo $tampil_detail['tugas'] ?></td>
-                                        <td><?php echo $tampil_detail['sakit'] ?></td>
-                                        <td><?php echo $tampil_detail['ijin'] ?></td>
-                                        <td><?php echo $tampil_detail['alpa'] ?></td>
                                         <td><?php echo $tampil_detail['catatan'] ?></td>
                                     </tr>
                                 </tbody>

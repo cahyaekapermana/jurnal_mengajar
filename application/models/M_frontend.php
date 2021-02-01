@@ -85,7 +85,35 @@ class M_frontend extends CI_Model
     // ==================================================================================================================
     // JURNAL Berdasarkan id user (update v2)
     // ==================================================================================================================
-    // Test detail
+
+    // Tampil table jurnal
+    function M_tampil_jurnal()
+    {
+        // Menampilkan kelas berdasarkan id profil user yg login, misal hakam yang login maka akan menampilkan data dari hakam 
+        $sessId = $this->session->userdata('sess_id');
+        // $sql = "SELECT id_jurnal, jam, kegiatan, tugas, catatan, tgl_jurnal, sakit, ijin, alpa, id_profile, id_kelas, id_siswa
+        // FROM jurnal WHERE jurnal.id_profile = '$sessId'
+        // ORDER BY id_jurnal DESC ";
+
+        // $query = $this->db->query($sql);
+        // return $query;
+        $sql = "SELECT id_jurnal,jurnal.id_kelas, jam, kegiatan, tugas, catatan, tgl_jurnal, nama_kelas FROM jurnal JOIN kelas ON jurnal.id_kelas = kelas.id_kelas WHERE jurnal.id_profile = '$sessId' ORDER BY id_jurnal";
+        return $this->db->query($sql);
+    }
+
+    // Tampil jurnal id
+    function M_tampil_jurnal_id($id)
+    {
+        // Menampilkan kelas berdasarkan id profil user yg login, misal hakam yang login maka akan menampilkan data dari hakam 
+        $sessId = $this->session->userdata('sess_id');
+        $where = array(
+            'id_jurnal'     => $id,
+            'id_profile'    => $sessId
+        );
+
+        $query = $this->db->get_where('jurnal', $where);
+        return $query->row_array();
+    }
 
     function M_detail_jurnal($id_jurnal, $id_kelas)
     {
@@ -103,35 +131,6 @@ class M_frontend extends CI_Model
         $this->db->where($where);
 
         $query = $this->db->get();
-        return $query->row_array();
-    }
-
-    // Tampil table jurnal
-    function M_tampil_jurnal()
-    {
-        // Menampilkan kelas berdasarkan id profil user yg login, misal hakam yang login maka akan menampilkan data dari hakam 
-        $sessId = $this->session->userdata('sess_id');
-        // $sql = "SELECT id_jurnal, jam, kegiatan, tugas, catatan, tgl_jurnal, sakit, ijin, alpa, id_profile, id_kelas, id_siswa
-        // FROM jurnal WHERE jurnal.id_profile = '$sessId'
-        // ORDER BY id_jurnal DESC ";
-
-        // $query = $this->db->query($sql);
-        // return $query;
-        $sql = "SELECT id_jurnal,jurnal.id_kelas, jam, kegiatan, tugas, id_siswa, catatan, tgl_jurnal, sakit, ijin, alpa, nama_kelas FROM jurnal JOIN kelas ON jurnal.id_kelas = kelas.id_kelas WHERE jurnal.id_profile = '$sessId' ORDER BY id_jurnal";
-        return $this->db->query($sql);
-    }
-
-    // Tampil jurnal id
-    function M_tampil_jurnal_id($id)
-    {
-        // Menampilkan kelas berdasarkan id profil user yg login, misal hakam yang login maka akan menampilkan data dari hakam 
-        $sessId = $this->session->userdata('sess_id');
-        $where = array(
-            'id_jurnal'     => $id,
-            'id_profile'    => $sessId
-        );
-
-        $query = $this->db->get_where('jurnal', $where);
         return $query->row_array();
     }
 
@@ -166,8 +165,9 @@ class M_frontend extends CI_Model
             // 'alpha'
         );
 
-        $this->db->insert('jurnal', $data);
-        // print_r($data);
+        // $this->db->insert('jurnal', $data);
+
+        print_r($data);
     }
 
     function M_edit_jurnal()

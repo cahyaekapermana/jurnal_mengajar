@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h4>Tambah Jurnal</h4>
+                    <h4>Tambah Jurnal berdasarkan kelas <?php echo $kelas_byId['nama_kelas'] ?></h4>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -23,6 +23,7 @@
                             <!-- form start -->
                             <form action="<?php echo site_url('C_frontend/aksi_add_jurnal') ?>" method="POST">
                                 <div class="card-body">
+                                    <input type="text" name="f_id_kelas" value="<?php echo $this->input->get('f_getkelas') ?>">
                                     <!-- Date -->
                                     <div class="form-group">
                                         <label>Date:</label>
@@ -43,17 +44,6 @@
                                             <input type="text" name="f_jamke" class="form-control" placeholder="Ke">
                                         </div>
                                     </div>
-                                    <!-- Ambil data dari tb kelas -->
-                                    <div class="form-group">
-                                        <label>Kelas</label>
-                                        <select name="f_getkelas" class="form-control-lg select2" style="width: 100%;">
-                                            <?php foreach ($tampil_kelas->result() as $tpl) { ?>
-
-                                                <option value="<?php echo $tpl->id_kelas ?>"><?php echo $tpl->nama_kelas ?></option>
-
-                                            <?php } ?>
-                                        </select>
-                                    </div>
                                     <div class="form-group">
                                         <label>Kegiatan</label>
                                         <textarea class="form-control" name="f_kegiatan" rows="3" placeholder="Enter ..."></textarea>
@@ -63,27 +53,51 @@
                                         <textarea class="form-control" name="f_tugas" rows="3" placeholder="Enter ..."></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label>Absensi</label>
+                                        <b><label>Absensi Siswa : </label></b>
+                                        <small class="text-muted">Masukan data siswa yang melakukan absensi (sakit, ijin atau alpa) dibawah!</small>
+
                                     </div>
                                     <div class="form-group">
                                         <label>Sakit</label>
-                                        <select class="form-control-lg select2" style="width: 100%;">
-                                            <option></option>
-                                        </select>
+                                        <div class="select2-purple">
+                                            <select class="select2" name="f_sakit" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                                <?php if ($siswa_byIdKelas->num_rows() > 0) {
+
+                                                    foreach ($siswa_byIdKelas->result_array() as $rowSakit) {
+
+                                                        echo '<option value="' . $rowSakit['id_siswa'] . '">' . $rowSakit['nama_siswa'] . '</option>';
+                                                    }
+                                                } ?>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Ijin</label>
-                                        <select class="form-control-lg select2" style="width: 100%;">
-                                            <option value=""></option>
+                                        <div class="select2-purple">
+                                            <select class="select2" name="f_ijin" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                                <?php if ($siswa_byIdKelas->num_rows() > 0) {
 
-                                        </select>
+                                                    foreach ($siswa_byIdKelas->result_array() as $rowIjin) {
+
+                                                        echo '<option value="' . $rowIjin['id_siswa'] . '">' . $rowIjin['nama_siswa'] . '</option>';
+                                                    }
+                                                } ?>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Alpha</label>
-                                        <select class="form-control-lg select2" style="width: 100%;">
-                                            <option value=""></option>
+                                        <div class="select2-purple">
+                                            <select class="select2" name="f_alpa" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                                <?php if ($siswa_byIdKelas->num_rows() > 0) {
 
-                                        </select>
+                                                    foreach ($siswa_byIdKelas->result_array() as $rowAlpa) {
+
+                                                        echo '<option value="' . $rowAlpa['id_siswa'] . '">' . $rowAlpa['nama_siswa'] . '</option>';
+                                                    }
+                                                } ?>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Catatan</label>

@@ -62,7 +62,7 @@ class C_user extends CI_Controller
                 redirect('C_frontend');
             } else {
                 echo $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert">
-                Nomor Telepon Atau Password salah!
+                Nomor Telepon salah!
              </div>');
                 redirect('C_user');
             }
