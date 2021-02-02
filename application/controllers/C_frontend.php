@@ -105,6 +105,28 @@ class C_frontend extends CI_Controller
         $this->load->view('template/admin/footer');
     }
 
+    function detail_kehadiran()
+    {
+
+        $getIdJurnal = $this->input->get('getIdJurnal');
+
+        if ($getIdJurnal) {
+
+            $data = array(
+                'title'             => "Detail Kehadiran",
+                'getKetJurnal'       => $this->M_frontend->M_detail_kehadiran($getIdJurnal),
+                'getDetailJurnal'    => $this->M_frontend->M_detail_jurnal_byIdJurnal($getIdJurnal)
+            );
+
+            $this->load->view('template/admin/header', $data);
+            $this->load->view('Frontend/frontend_jurnal/V_detail_kehadiran', $data);
+            $this->load->view('template/admin/footer');
+        } else {
+            show_404();
+        }
+    }
+
+
     function hapus_jurnal($id)
     {
         $this->M_frontend->M_hapus_jurnal($id);

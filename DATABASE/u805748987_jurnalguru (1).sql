@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2021 at 03:23 AM
+-- Generation Time: Feb 02, 2021 at 06:06 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -37,6 +37,20 @@ CREATE TABLE `bantuan` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `detail_jurnal`
+--
+
+CREATE TABLE `detail_jurnal` (
+  `id_detail_jurnal` int(11) NOT NULL,
+  `id_jurnal` varchar(100) NOT NULL,
+  `id_siswa` varchar(100) NOT NULL,
+  `keterangan` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jurnal`
 --
 
@@ -47,23 +61,10 @@ CREATE TABLE `jurnal` (
   `jam` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `kegiatan` text COLLATE utf8mb4_unicode_ci,
   `tugas` text COLLATE utf8mb4_unicode_ci,
-  `id_siswa` text COLLATE utf8mb4_unicode_ci,
   `catatan` text COLLATE utf8mb4_unicode_ci,
   `tgl_jurnal` datetime DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `sakit` text COLLATE utf8mb4_unicode_ci,
-  `ijin` text COLLATE utf8mb4_unicode_ci,
-  `alpa` text COLLATE utf8mb4_unicode_ci
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `jurnal`
---
-
-INSERT INTO `jurnal` (`id_jurnal`, `id_profile`, `id_kelas`, `jam`, `kegiatan`, `tugas`, `id_siswa`, `catatan`, `tgl_jurnal`, `created_at`, `sakit`, `ijin`, `alpa`) VALUES
-(1, '6', '7', '1 - 3', 'Mengaji', 'Hafalan', NULL, 'Lancar2 ya', '2021-01-12 00:20:06', '2021-01-30 17:20:06', NULL, NULL, NULL),
-(2, '6', '7', ' - ', '', '', NULL, '', '2021-01-31 00:53:07', '2021-01-30 17:53:07', NULL, NULL, NULL),
-(3, '8', '8', '2 - 5', 'PLH', 'Mengaji', NULL, 'Belajar', '2021-01-19 09:12:51', '2021-01-31 02:12:51', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -77,19 +78,6 @@ CREATE TABLE `kelas` (
   `nama_kelas` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `kelas`
---
-
-INSERT INTO `kelas` (`id_kelas`, `id_profile`, `nama_kelas`, `created_at`) VALUES
-(2, NULL, 'RPL B', '2021-01-26 05:35:34'),
-(3, NULL, 'RPL C', '2021-01-26 05:35:34'),
-(5, '6', 'MI-3A', '2021-01-28 07:16:52'),
-(6, '6', 'Informatika', '2021-01-28 08:21:01'),
-(7, '6', 'MI-2F', '2021-01-28 15:33:30'),
-(8, '8', 'MI-1B', '2021-01-31 02:08:12'),
-(9, '8', 'MI-1A', '2021-01-31 02:08:49');
 
 -- --------------------------------------------------------
 
@@ -187,24 +175,6 @@ CREATE TABLE `siswa` (
   `nama_siswa` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `siswa`
---
-
-INSERT INTO `siswa` (`id_siswa`, `id_kelas`, `nama_siswa`) VALUES
-(1, '5', 'Cahya Eka Dwi'),
-(4, '', 'Cahya Eka Perrr'),
-(5, NULL, 'Sheva'),
-(6, NULL, 'Dwi Nur Alysa'),
-(7, NULL, ''),
-(10, '5', 'Cahya'),
-(12, '6', 'Sheva12'),
-(13, '6', 'Sherin'),
-(14, '7', 'Rachmad Yadyantooo'),
-(15, '7', 'Aris'),
-(16, '7', 'Cahya'),
-(17, '8', 'Ely');
-
 -- --------------------------------------------------------
 
 --
@@ -242,6 +212,12 @@ INSERT INTO `users` (`id_profile`, `foto_profil`, `nama_user`, `no_telepon`, `em
 --
 ALTER TABLE `bantuan`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `detail_jurnal`
+--
+ALTER TABLE `detail_jurnal`
+  ADD PRIMARY KEY (`id_detail_jurnal`);
 
 --
 -- Indexes for table `jurnal`
@@ -308,22 +284,28 @@ ALTER TABLE `bantuan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `detail_jurnal`
+--
+ALTER TABLE `detail_jurnal`
+  MODIFY `id_detail_jurnal` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `jurnal`
 --
 ALTER TABLE `jurnal`
-  MODIFY `id_jurnal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_jurnal` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `link_tugas`
 --
 ALTER TABLE `link_tugas`
-  MODIFY `id_link` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_link` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `masukan`
@@ -353,7 +335,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

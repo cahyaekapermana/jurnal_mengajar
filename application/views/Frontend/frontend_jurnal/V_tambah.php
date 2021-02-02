@@ -23,6 +23,7 @@
                             <!-- form start -->
                             <form action="<?php echo site_url('C_frontend/aksi_add_jurnal') ?>" method="POST">
                                 <div class="card-body">
+                                    <!-- Hidden -->
                                     <input type="text" name="f_id_kelas" value="<?php echo $this->input->get('f_getkelas') ?>">
                                     <!-- Date -->
                                     <div class="form-group">
@@ -53,14 +54,13 @@
                                         <textarea class="form-control" name="f_tugas" rows="3" placeholder="Enter ..."></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <b><label>Absensi Siswa : </label></b>
+                                        <b><label>Absensi Siswa : </label></b><br>
                                         <small class="text-muted">Masukan data siswa yang melakukan absensi (sakit, ijin atau alpa) dibawah!</small>
-
                                     </div>
                                     <div class="form-group">
                                         <label>Sakit</label>
                                         <div class="select2-purple">
-                                            <select class="select2" name="f_sakit" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                            <select class="select2" name="f_sakit[]" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
                                                 <?php if ($siswa_byIdKelas->num_rows() > 0) {
 
                                                     foreach ($siswa_byIdKelas->result_array() as $rowSakit) {
@@ -74,7 +74,7 @@
                                     <div class="form-group">
                                         <label>Ijin</label>
                                         <div class="select2-purple">
-                                            <select class="select2" name="f_ijin" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                            <select class="select2" name="f_ijin[]" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
                                                 <?php if ($siswa_byIdKelas->num_rows() > 0) {
 
                                                     foreach ($siswa_byIdKelas->result_array() as $rowIjin) {
@@ -88,7 +88,7 @@
                                     <div class="form-group">
                                         <label>Alpha</label>
                                         <div class="select2-purple">
-                                            <select class="select2" name="f_alpa" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                            <select class="select2" name="f_alpha[]" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
                                                 <?php if ($siswa_byIdKelas->num_rows() > 0) {
 
                                                     foreach ($siswa_byIdKelas->result_array() as $rowAlpa) {

@@ -134,6 +134,28 @@ class M_frontend extends CI_Model
         return $query->row_array();
     }
 
+    function M_detail_kehadiran($id_jurnal)
+    {
+
+        $sessId = $this->session->userdata('sess_id');
+
+        $sql = "SELECT id_jurnal,jurnal.id_kelas, jam, kegiatan, tugas, catatan, tgl_jurnal, nama_kelas FROM jurnal 
+        JOIN kelas ON jurnal.id_kelas = kelas.id_kelas 
+        WHERE jurnal.id_profile = '$sessId' AND jurnal.id_jurnal ='$id_jurnal' ORDER BY id_jurnal";
+        return $this->db->query($sql)->row_array();
+    }
+
+
+    // ambil siswa untuk tabel kehadiran
+    function M_detail_jurnal_byIdJurnal($id_jurnal)
+    {
+
+        $SQL = "SELECT siswa.*, detail_jurnal.* FROM detail_jurnal JOIN siswa ON detail_jurnal.id_siswa = siswa.id_siswa 
+                WHERE id_jurnal = '$id_jurnal'";
+
+        return $this->db->query($SQL)->result_array();
+    }
+
     function M_tambah_jurnal()
     {
 
@@ -148,10 +170,10 @@ class M_frontend extends CI_Model
         $gabung = array($jam_dari, $jam_ke);
         $jam = implode(" - ", $gabung);
 
-
+        // jurnal
         $data = array(
             // id_kelas = ambil data dari table kelas
-            'id_kelas'  => $this->input->post('f_getkelas'),
+            'id_kelas'  => $this->input->post('f_id_kelas'),
             // ===
             'jam'    => $jam,
             'kegiatan'  => $this->input->post('f_kegiatan'),
@@ -159,15 +181,135 @@ class M_frontend extends CI_Model
             'catatan'   => $this->input->post('f_catatan'),
             'tgl_jurnal' => $tgl_baru,
             'id_profile' => $sessId
-            // DIAMBIL DARI DATA SISWA
-            // 'sakit'
-            // 'ijin'
-            // 'alpha'
         );
 
-        // $this->db->insert('jurnal', $data);
+        $this->db->insert('jurnal', $data);
+        $last_idJurnal = $this->db->insert_id();
 
-        print_r($data);
+        // mengolah data keterangan siswa 
+        $where = array('id_kelas' => $this->input->post('f_id_kelas'));
+        $ambilDataSiswa_byIdKelas = $this->db->get_where('siswa', $where);
+        // get input element from view
+        $var_ijin  = $this->input->post('f_ijin');
+        $var_sakit = $this->input->post('f_sakit');
+        $var_alpha = $this->input->post('f_alpha');
+
+        // rekapan kehadiran (detail jurnal)
+        $rekapKehadiran = array();
+
+
+        foreach ($ambilDataSiswa_byIdKelas->result_array() as $dataSiswa) {
+
+            // nilai awal 
+            $status_izin    = false;
+            $status_sakit   = false;
+            $status_alpha    = false;
+
+            if ($var_ijin == TRUE) { // APAKAH INPUTAN IZIN ADA ISINYA ?
+
+                // proses pengecekan siswa izin
+                foreach ($var_ijin as $siswaIjin) {
+                    # code...
+                    if ($dataSiswa['id_siswa'] == $siswaIjin) {
+                        # code...
+                        $status_izin = true;
+                        break;
+                    } else {
+                        $status_izin = false;
+                    }
+                }
+            }
+
+
+            if ($var_sakit == TRUE) {
+
+                // proses pengecekan siswa sakit
+                foreach ($var_sakit as $siswaSakit) {
+                    # code...
+                    if ($dataSiswa['id_siswa'] == $siswaSakit) {
+                        # code...
+                        $status_sakit = true;
+                        break;
+                    } else {
+                        $status_sakit = false;
+                    }
+                }
+            }
+
+            if ($var_alpha == TRUE) {
+                # code...
+                foreach ($var_alpha as $siswaAlpa) {
+                    # code...
+                    if ($dataSiswa['id_siswa'] == $siswaAlpa) {
+                        # code...
+                        $status_alpha = true;
+                        break;
+                    } else {
+                        $status_alpha = false;
+                    }
+                }
+            }
+            // proses pengecekan siswa alpa
+
+
+
+            // penentuan IZIN | ALPHA | SAKIT 
+            $lihatStatusSebenarnya = "";
+            if ($status_izin == TRUE) {
+
+                array_push($rekapKehadiran, array(
+
+                    'id_jurnal'     => $last_idJurnal,
+                    'id_siswa'      => $dataSiswa['id_siswa'],
+                    'keterangan'    => 'izin'
+                ));
+                $lihatStatusSebenarnya = "Izin";
+            } else if ($status_sakit == TRUE) {
+
+                array_push($rekapKehadiran, array(
+
+                    'id_jurnal'     => $last_idJurnal,
+                    'id_siswa'  => $dataSiswa['id_siswa'],
+                    'keterangan' => 'sakit'
+                ));
+
+                $lihatStatusSebenarnya = "Sakit";
+            } else if ($status_alpha == TRUE) {
+
+                array_push($rekapKehadiran, array(
+
+                    'id_jurnal'     => $last_idJurnal,
+                    'id_siswa'  => $dataSiswa['id_siswa'],
+                    'keterangan' => 'alpha'
+                ));
+
+                $lihatStatusSebenarnya = "Alpha";
+            } else { // siswa hadir
+
+
+                array_push($rekapKehadiran, array(
+
+                    'id_jurnal'     => $last_idJurnal,
+                    'id_siswa'      => $dataSiswa['id_siswa'],
+                    'keterangan'    => 'hadir'
+                ));
+
+                $lihatStatusSebenarnya = "hadir";
+            }
+        }
+
+        // insert data detail jurnal 
+        $this->db->insert_batch('detail_jurnal', $rekapKehadiran);
+
+
+        // // print_r($rekapKehadiran);
+        // foreach ($rekapKehadiran as $lihatKehadiran) {
+
+        //     print_r($lihatKehadiran);
+        //     echo  '<hr>';
+        // }
+
+        redirect('jurnal');
     }
 
     function M_edit_jurnal()
@@ -200,6 +342,7 @@ class M_frontend extends CI_Model
     {
         $this->db->where('id_jurnal', $id);
         $this->db->delete('jurnal');
+        $this->db->delete('detail_jurnal');
     }
 
     // ==================================================================================================================

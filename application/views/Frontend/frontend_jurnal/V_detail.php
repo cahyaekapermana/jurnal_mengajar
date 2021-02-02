@@ -33,12 +33,38 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><?php echo $tampil_detail['tgl_jurnal'] ?></td>
-                                        <td><?php echo $tampil_detail['jam'] ?></td>
-                                        <td><?php echo $tampil_detail['nama_kelas'] ?></td>
-                                        <td><?php echo $tampil_detail['kegiatan'] ?></td>
-                                        <td><?php echo $tampil_detail['tugas'] ?></td>
-                                        <td><?php echo $tampil_detail['catatan'] ?></td>
+                                        <td>
+                                            <?php
+
+                                            $getSegJurnal = $this->uri->segment(3);
+
+                                            ?>
+                                            <a href="<?php echo site_url('C_frontend/detail_kehadiran?getIdJurnal=' . $getSegJurnal) ?>">
+                                                <?php echo date('d F Y H.i A', strtotime($tampil_detail['tgl_jurnal'])) ?>
+                                            </a><br>
+                                            <small class="text-muted">Klik untuk mendetail</small>
+
+                                        </td>
+                                        <td>
+                                            <?php echo $tampil_detail['jam'] ?><br>
+                                            <small class="text-muted">Jam Mengajar</small>
+                                        </td>
+                                        <td>
+                                            <?php echo $tampil_detail['nama_kelas'] ?><br>
+                                            <small class="text-muted">Kelas Tempat Mengajar</small>
+                                        </td>
+                                        <td>
+                                            <?php echo $tampil_detail['kegiatan'] ?><br>
+                                            <small class="text-muted">Kegiatan Pembelajaran</small>
+                                        </td>
+                                        <td>
+                                            <?php echo $tampil_detail['tugas'] ?><br>
+                                            <small class="text-muted">Tugas Yang Diberikan</small>
+                                        </td>
+                                        <td>
+                                            <?php echo $tampil_detail['catatan'] ?><br>
+                                            <small class="text-muted">Catatan Pengajar</small>
+                                        </td>
                                     </tr>
                                 </tbody>
 
