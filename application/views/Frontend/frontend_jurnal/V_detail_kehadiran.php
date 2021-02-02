@@ -4,10 +4,28 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col-sm-9">
                     <h1>Detail Kehadiran</h1>
-                    <small>Detail kehadiran kelas <?php echo $getKetJurnal['nama_kelas'] ?></small> <br>
-                    <small><span class="text-bold">Kegiatan </span> : <?php echo $getKetJurnal['kegiatan'] ?></small>
+                    <small>Detail kehadiran absensi kelas <?php echo $getKetJurnal['nama_kelas'] ?></small> <br>
+                    <div class="callout callout-danger">
+                        <table style="width:100%">
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Jam</th>
+                                <th>Kegiatan</th>
+                                <th>Tugas</th>
+                                <th>Catatan</th>
+                            </tr>
+                            <tr>
+                                <td><?php echo $getKetJurnal['tgl_jurnal'] ?></td>
+                                <td width="10%"><?php echo $getKetJurnal['jam'] ?></td>
+                                <td><?php echo $getKetJurnal['kegiatan'] ?></td>
+                                <td><?php echo $getKetJurnal['tugas'] ?></td>
+                                <td><?php echo $getKetJurnal['catatan'] ?></td>
+                            </tr>
+
+                        </table>
+                    </div>
                 </div>
             </div>
         </div><!-- /.container-fluid -->

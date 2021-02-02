@@ -21,10 +21,10 @@
                         <div class="card-body">
                             <!-- Content -->
                             <!-- form start -->
-                            <form action="<?php echo site_url('C_frontend/aksi_add_jurnal') ?>" method="POST">
+                            <form action="<?php echo site_url('C_frontend/jurnal') ?>" method="POST">
                                 <div class="card-body">
                                     <!-- Hidden -->
-                                    <input type="text" name="f_id_kelas" value="<?php echo $this->input->get('f_getkelas') ?>">
+                                    <input type="hidden" name="f_id_kelas" value="<?php echo $this->input->get('f_getkelas') ?>">
                                     <!-- Date -->
                                     <div class="form-group">
                                         <label>Date:</label>
