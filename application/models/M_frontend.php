@@ -97,7 +97,7 @@ class M_frontend extends CI_Model
 
         // $query = $this->db->query($sql);
         // return $query;
-        $sql = "SELECT id_jurnal,jurnal.id_kelas, jam, kegiatan, tugas, catatan, tgl_jurnal, nama_kelas FROM jurnal JOIN kelas ON jurnal.id_kelas = kelas.id_kelas WHERE jurnal.id_profile = '$sessId' ORDER BY id_jurnal";
+        $sql = "SELECT id_jurnal,jurnal.id_kelas, jam, kegiatan, tugas, catatan, tgl_jurnal, nama_kelas FROM jurnal JOIN kelas ON jurnal.id_kelas = kelas.id_kelas WHERE jurnal.id_profile = '$sessId' ORDER BY id_jurnal DESC";
         return $this->db->query($sql);
     }
 
@@ -309,7 +309,7 @@ class M_frontend extends CI_Model
         //     echo  '<hr>';
         // }
 
-        redirect('jurnal');
+        redirect('C_frontend/jurnal');
     }
 
     function M_edit_jurnal()

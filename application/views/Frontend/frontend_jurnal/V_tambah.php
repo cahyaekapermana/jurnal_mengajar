@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <!-- Content -->
                             <!-- form start -->
-                            <form action="<?php echo site_url('C_frontend/jurnal') ?>" method="POST">
+                            <form action="<?php echo site_url('C_frontend/aksi_add_jurnal') ?>" method="POST">
                                 <div class="card-body">
                                     <!-- Hidden -->
                                     <input type="hidden" name="f_id_kelas" value="<?php echo $this->input->get('f_getkelas') ?>">
